@@ -23,4 +23,11 @@ public class Calculatrice {
         return Math.pow(num1,num2);
     }
 
+    public static double factorielle(int num1){
+        return num1 * factorielle(num1 - 1);
+    }
+
+    public static double racinecarree(int num1){
+        return Math.sqrt(num1);
+    }
 }
