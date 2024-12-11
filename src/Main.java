@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        double num1, num2;
+        double num1 = 0, num2 = 0;
         int operator;
         Scanner sc = new Scanner(System.in);
 
@@ -19,21 +19,20 @@ public class Main {
             System.out.print("Entre votre choix : ");
             operator = sc.nextInt();
 
-            // Esc
-            if (operator == 8) {
-                System.out.println("Au revoir !");
-                break;
-            }
-
-            System.out.print("Enter first number: ");
-            num1 = sc.nextDouble();
-
-
-            if (operator != 6 && operator != 7) {
-                System.out.print("Enter second number: ");
+            if (operator >= 1 && operator <= 5) {
+                System.out.print("Enter first number : ");
+                num1 = sc.nextDouble();
+                System.out.print("Enter second number : ");
                 num2 = sc.nextDouble();
+            } else if (operator == 6 || operator == 7) {
+                System.out.print("Enter first number :");
+                num1 = sc.nextDouble();
+            } else if (operator == 8) {
+                System.out.println("Au revoir !!!");
+                break;
             } else {
-                num2 = 0;
+                System.out.println("Option invalide");
+                continue;
             }
 
             switch (operator) {
@@ -47,24 +46,29 @@ public class Main {
                     System.out.println("Multiplication : " + Calculatrice.multiplication(num1, num2));
                     break;
                 case 4:
-                    System.out.println("Division : " + Calculatrice.division(num1, num2));
+                    if (num2 == 0) {
+                        System.out.println("Erreur : Division par zero");
+                    } else {
+                        System.out.println("Division : " + Calculatrice.division(num1, num2));
+                    }
                     break;
                 case 5:
                     System.out.println("Puissance : " + Calculatrice.puissance(num1, num2));
                     break;
                 case 6:
-                    System.out.println("Racinecarree : " + Calculatrice.racinecarree((int) num1));
-
-                    break;
-                case 7:
                     if (num1 < 0) {
-                        System.out.println("Erreur : Factorielle d'un nombre negatif ");
+                        System.out.println("Erreur : Racine carree d'un nombre negatif");
                     } else {
                         System.out.println("Factorielle : " + Calculatrice.factorielle((int) num1));
                     }
                     break;
-                default:
-                    System.out.println("Option invalide");
+                case 7:
+                    if (num1 < 0) {
+                        System.out.println("Erreur : Factorielle d'un nombre negatif");
+                    } else {
+                        System.out.println("Factorielle : " + Calculatrice.factorielle((int) num1));
+                    }
+                    break;
             }
         }
 

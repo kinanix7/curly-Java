@@ -35,5 +35,6 @@ public class Calculatrice {
             return 1;
         }
         return num1 * factorielle(num1 - 1);
+
     }
 }
